@@ -1,4 +1,4 @@
-package tests;
+package tests.pet;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -10,6 +10,8 @@ import static io.restassured.RestAssured.given;
 
 public class E2ETest {
 
+    private int id = 5466;
+
     private final HashMap<String, String> dataMap = new HashMap<>();
 
 
@@ -19,7 +21,7 @@ public class E2ETest {
                 .header("Content-type", "application/json")
                 .and()
                 .body("{\n" +
-                        "  \"id\": 5466,\n" +
+                        "  \"id\": " + this.id + ",\n" +
                         "  \"category\": {\n" +
                         "    \"id\": 0,\n" +
                         "    \"name\": \"string\"\n" +
@@ -43,7 +45,7 @@ public class E2ETest {
                 .all()
                 .extract().response();
 
-        dataMap.put("id", "5466");
+        dataMap.put("id", String.valueOf(id));
         Assert.assertEquals(200, response.statusCode());
     }
 

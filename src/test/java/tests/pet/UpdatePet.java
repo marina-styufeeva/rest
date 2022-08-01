@@ -1,4 +1,4 @@
-package tests;
+package tests.pet;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
